@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ad Display Demo App</title>
+<link href="../Pyxis_A/css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<script>
+// start when the page is loaded
+window.onload = function() {
+
+  var urls = [
+    "/mnt/sdcard/downloads/slides/slide1.jpg",
+    "/mnt/sdcard/downloads/slides/slide2.jpg",
+    "/mnt/sdcard/downloads/slides/slide3.jpg",
+	"/mnt/sdcard/downloads/slides/slide4.jpg"// no ,!!
+  ];
+
+  var index = 1;
+  var el = document.getElementById("rotator");
+
+  setTimeout(function rotate() {
+
+    if ( index === urls.length ) {
+      index = 0;
+    }
+
+    el.src = urls[index];
+    index  = index + 1;
+
+    // continue rotating iframes
+    setTimeout(rotate, 60000);
+
+  }, 60000); // 60000ms = 60s
+};
+</script>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="container"><iframe id="rotator" src="/mnt/sdcard/downloads/slides/slide1.jpg" width="1280" height="720" frameborder="0"></iframe></div>
+</body>
+</html>
